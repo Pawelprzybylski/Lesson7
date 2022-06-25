@@ -1,28 +1,29 @@
 public abstract class BaseEmployee {
 
+    static final int ACTUAL_YEAR = 2022;
+    private static final int DEFAULT_SALARY = 3000;
+    private final int yearOfEmployment;
     private String name;
     private String surname;
-    private int baseSallary = 3000;
-    private int yearOfEmployment;
-    private static final int Default_Sallary = 3000;
-
-    public BaseEmployee(String name, String surname, int baseSallary, int yearOfEmployment) {
-        this.name = name;
-        this.surname = surname;
-        this.baseSallary = baseSallary;
-        this.yearOfEmployment = yearOfEmployment;
-    }
+    private int baseSalary;
 
     public BaseEmployee(String name, String surname, int yearOfEmployment) {
+        this(name, surname, DEFAULT_SALARY, yearOfEmployment);
+    }
+
+    public BaseEmployee(String name, String surname, int baseSalary, int yearOfEmployment) {
         this.name = name;
         this.surname = surname;
         this.yearOfEmployment = yearOfEmployment;
-        this.baseSallary = Default_Sallary;
-
+        this.baseSalary = baseSalary;
     }
 
-    public int getBaseSallary() {
-        return baseSallary;
+    public int getBaseSalary() {
+        return baseSalary;
+    }
+
+    public void setBaseSalary(int baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
     public String getName() {
@@ -49,11 +50,13 @@ public abstract class BaseEmployee {
     public String toString() {
         return "BaseEmployee{" +
                 "name=" + name + "" +
-                ", surname=" + surname + "" + ", Sallary" + baseSallary;
+                ", surname=" + surname + "" + ", Sallary" + baseSalary;
     }
 
     abstract int calculateMonthlySalary();
 
+    int getYearsOfService() {
+        return ACTUAL_YEAR - yearOfEmployment;
+    }
+
 }
-
-
